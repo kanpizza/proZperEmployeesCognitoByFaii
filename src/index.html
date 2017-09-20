@@ -1,14 +1,38 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>MyRoutes</title>
-  <base href="/">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular 2 - Router example with child routes</title>
+    <script src="https://unpkg.com/systemjs@0.19.38/dist/system.src.js"></script>
+    <script src="https://code.angularjs.org/tools/typescript.js"></script>
+    <script src="system.config.js"></script>
+    <!-- Set the base href, demo only! In your app: <base href="/"> -->
+    <script>document.write('<base href="' + document.location + '" />');</script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+      <!--toast-->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./assets/Styles/ng2-toastr.min.css">
+    
+      <!--w3-->
+      <link rel="stylesheet" href="assets/Styles/w3.css">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <!--material-->
+      <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    
+      <!-- modal -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+     
+  </head>
+  <body>
+    <app>Loading...</app>
+    
+    <script>
+      System.import('app');
+    </script>
+  </body>
+
 </html>

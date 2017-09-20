@@ -1,0 +1,212 @@
+@font-face {
+    font-family: myfonts;
+    src: url("/assets/Fonts/prompt-light.woff");
+}
+
+body{
+    background-image: url("/assets/Images/signin.jpg");
+    font-family: myfonts;
+}
+.font-toarst{
+    font-family: myfonts;
+}
+
+.modal{
+    font-family: myfonts;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.title-bar {
+    background-color: #4DB9B9;
+    flex: 0 0 76px;
+    flex-flow: row;
+    padding: 0 15px 0 15px;
+    
+}
+
+.title-bar img{
+     width:100%;
+     max-width:200px;
+     padding: 15px 15px 25px 15px;
+}
+
+.w3-sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #FFF; 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidenav-menu-header{
+    background: linear-gradient(45deg,#0d65d8,#5d9cec);
+    height: 84px;
+    display: flex;
+    align-items:center;
+}
+.title{
+    font-size: 20px;
+    line-height: 1.25em;
+}
+
+
+.header-text {
+    font-size: 24px;
+    font-weight: 400!important;
+    color: #fff;
+    padding-top: 15px;
+}
+
+
+
+i{
+    color: white;
+}
+
+i.nav-icon{
+    color: #478aff;
+    margin-right: 10px;
+}
+
+.material-icons {
+    font-family: Material Icons;
+    vertical-align: middle;
+}
+
+.avatar{
+    width: 64px;
+    height: 64px;
+    margin: 0;
+}
+
+
+/*nav-toolbar*/
+
+.nav-toolbar{
+    display: -webkit-flex;
+    display: flex;
+    /* display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal; */
+}
+/* .nav-toolbar-search, .nav-toolbar-button{
+    display: inline;   
+} */
+.nav-toolbar-search{
+    -webkit-align-self: stretch;
+    align-self: stretch;
+    height: 40px;
+    width: 100%;
+    display: flex;
+}
+.nav-toolbar-button{
+    -webkit-align-self: stretch;
+    align-self: stretch;
+    padding-left: 20px;
+}
+.nav-toolbar-search #nav-toolbar-search-input{
+    -webkit-align-self: stretch;
+    align-self: stretch;
+    width: 90%;
+}
+.nav-toolbar-search .icon material-icons{
+    -webkit-align-self: stretch;
+    align-self: stretch;
+    width: 10%;
+}
+
+
+#nav-card{
+    background: rgba(255, 255, 255, 0.3);
+    /* display: flex;
+    align-items: center;  */
+    /* align-self: stretch; */
+}
+#nav-card.active{
+    background-color:white;
+}
+
+#first-select{
+    border-radius: 5px 5px 0px 0px; 
+    padding: 5px 15px 0px 15px; 
+    opacity: 1;
+}
+.right-nav-content .w3-bar-item{
+    border-radius: 5px 5px 0px 0px; 
+    padding: 5px 15px 0px 15px; 
+    opacity: 0.3;
+} 
+
+
+.nav-content-info .info-title{
+    font-size: 18px;
+    line-height: 1.25em;
+}
+
+ 
+.scrollbar1{	
+    height: 485px;
+    width: 100%;
+	overflow-y: scroll;
+}
+.scrollbar2{	
+    height: 517px;
+    width: 100%;
+	overflow-y: scroll;
+}
+#style-4::-webkit-scrollbar
+{
+	width: 15px;
+}
+
+#style-4::-webkit-scrollbar-thumb
+{
+	background-color: rgba(0,0,0,0.3);
+	
+}
+
+
+.test-flex{
+    display: -webkit-flex;
+    
+}
+
+
+.pz-panel .mdl-button{
+    background-color: #478aff!important;
+}
+
+.content{
+    display: -webkit-flex;
+    display: flex;
+}
+
+.left-nav{
+    -webkit-align-self: stretch;
+    align-self: stretch;
+    width: 33%;
+    background-color: rgba(201,215,233,.5);
+}
+
+.right-nav-content{
+    -webkit-align-self: stretch;
+    align-self: stretch;
+    width: 67%;
+    background-color: rgba(201,215,233,.5);
+}
+
+#employeeInfo{
+    /* background: #b3d4fc; */
+    /* text-shadow: none; */
+    background: -webkit-linear-gradient(45deg, rgb(203, 216, 234) , rgb(236, 240, 247)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(45deg, rgb(203, 216, 234) , rgb(236, 240, 247)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(45deg, rgb(203, 216, 234) , rgb(236, 240, 247)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(45deg, rgb(203, 216, 234) , rgb(236, 240, 247)); /* Standard syntax (must be last) */
+}
+
+
