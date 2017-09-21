@@ -3,7 +3,6 @@ import * as AWS from 'aws-sdk';
 import { CognitoService } from './cognito.service';
 import * as AWSCognito from 'amazon-cognito-identity-js';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
-import { Employee } from 'assets/Data/employee.types';
 @Injectable()
 export class DynamoDBService {  
   static employees: any;
@@ -77,8 +76,8 @@ export class DynamoDBService {
 
   public static query(params): Promise<any> {
     return new Promise((resolve, reject) => {
-      let dynamoDb = new AWS.DynamoDB({endpoint:"http://localhost:8000",region: "us-east-1",accessKeyId:"LKGEJPGJR",secretAccessKey: "fhoefek"});
-      let docClient = new AWS.DynamoDB.DocumentClient({endpoint:"http://localhost:8000",region: "us-east-1",accessKeyId:"LKGEJPGJR",secretAccessKey: "fhoefek"});
+      let dynamoDb = new AWS.DynamoDB();
+      let docClient = new AWS.DynamoDB.DocumentClient();
       docClient.query(params, (queryError, result) => {
         if (queryError) {
           if (queryError.code === 'CredentialsError') {
@@ -174,8 +173,8 @@ export class DynamoDBService {
   }
   public static update(params): Promise<any> {
     return new Promise((resolve, reject) => {
-      let dynamoDb = new AWS.DynamoDB({endpoint:"http://localhost:8000",region: "us-east-1",accessKeyId:"LKGEJPGJR",secretAccessKey: "fhoefek"});
-      let docClient = new AWS.DynamoDB.DocumentClient({endpoint:"http://localhost:8000",region: "us-east-1",accessKeyId:"LKGEJPGJR",secretAccessKey: "fhoefek"});
+      let dynamoDb = new AWS.DynamoDB();
+      let docClient = new AWS.DynamoDB.DocumentClient();
       docClient.update(params, (updateError, result) => {
         if (updateError) {
           if (updateError.code === 'CredentialsError') {
