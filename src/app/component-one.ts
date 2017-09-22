@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import * as AWS from 'aws-sdk';
 import * as AWSCognito from 'amazon-cognito-identity-js';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
+import { CognitoService } from './cognito.service';
 @Component({
   selector: 'component-one',
   template:  ` 
@@ -35,42 +36,42 @@ export default class ComponentOne {
   }
   title = 'app';
   ngOnInit() : void{
-    this.signup();
+    CognitoService.init();
   }
-  signup(){
-   var dataEmail;
-    document.getElementById("signup-submit-button").addEventListener("click",(e) => {
-      e.preventDefault();
+  // signup(){
+  //  var dataEmail;
+  //   document.getElementById("signup-submit-button").addEventListener("click",(e) => {
+  //     e.preventDefault();
 
-      var email =(<HTMLInputElement>document.getElementById('email-input')).value;
-      var password = (<HTMLInputElement>document.getElementById('password-input')).value;
+  //     var email =(<HTMLInputElement>document.getElementById('email-input')).value;
+  //     var password = (<HTMLInputElement>document.getElementById('password-input')).value;
       
-      localStorage.setItem('email',email)
-      localStorage.setItem('password',password)
+  //     localStorage.setItem('email',email)
+  //     localStorage.setItem('password',password)
       
-      var attributeList = [];
+  //     var attributeList = [];
 
-      dataEmail = {
-        Name : 'email',
-        Value : email
-      };
+  //     dataEmail = {
+  //       Name : 'email',
+  //       Value : email
+  //     };
       
-      var attributeEmail = new AWSCognito.CognitoUserAttribute(dataEmail);
-      attributeList.push(dataEmail);
-     console.log(dataEmail);
-     console.log(attributeList);
-      this.userPool.signUp(email,password ,attributeList,null,function(err,result){
-        if(err) {
-          alert(err);
-          console.log("error");
-          return;
-        }
+  //     var attributeEmail = new AWSCognito.CognitoUserAttribute(dataEmail);
+  //     attributeList.push(dataEmail);
+  //    console.log(dataEmail);
+  //    console.log(attributeList);
+  //     this.userPool.signUp(email,password ,attributeList,null,function(err,result){
+  //       if(err) {
+  //         alert(err);
+  //         console.log("error");
+  //         return;
+  //       }
        
-        var cognitoUser = result.user;
-        console.log("UserRegistrationService: registered user is " + cognitoUser.getUsername());
+  //       var cognitoUser = result.user;
+  //       console.log("UserRegistrationService: registered user is " + cognitoUser.getUsername());
 
-      });
+  //     });
       
-    })
-  }
+  //   })
+  // }
 }
