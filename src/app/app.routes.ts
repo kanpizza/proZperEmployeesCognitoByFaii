@@ -6,7 +6,7 @@ import ComponentThree from './component-three';
 import ComponentFour from './component-four';
 import ComponentFive from './component-five';
 export const routes: Routes = [
-  { path: '', redirectTo: 'component-one', pathMatch: 'full' },
+  { path: '', redirectTo: 'component-three', pathMatch: 'full' },
   { path: 'component-one', component: ComponentOne },
   { path: 'component-two', component: ComponentTwo},
   { path: 'component-three', component: ComponentThree},

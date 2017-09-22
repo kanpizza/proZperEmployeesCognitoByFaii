@@ -6,24 +6,40 @@ import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cogni
 import { CognitoService} from './cognito.service';
 @Component({
   selector: 'component-three',
+  styleUrls: ['./app.component.css'],
   template: `
-  current user
-  <p id="username"></p>
-  <h1>sign in</h1>
-  <form>
-    <label>Email</label>
-    <input type="text" name="email" id="login-email-input" [(ngModel)]="email" />
-    <label>Password</label>
-    <input type="password" name="password" id="login-password-input" [(ngModel)]="password"/>
-    <br/>
-    <button (click)="callSignin()">call</button>
-
-    <input type="submit" id="logout-submit-button" />logout
-    
-    <input [routerLink]="['/component-five']"  type="submit" id="submit-button" />เข้าระบบ
-    <br>
-  </form>
-  <router-outlet></router-outlet>
+          <body>
+          <div class="title-bar w3-container">
+          <button class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons" (click)="openNav()">menu</i></button>
+          <img src="assets/Images/proZper.png">
+          </div>
+        <div id="mySidenav"style="opacity:1.0;filter:alpha(opacity=200)" class="w3-sidebar w3-bar-block w3-animate-left" (mouseleave)="closeNav()">
+        <div class="sidenav-menu-header w3-container">
+          </div>
+          <a [routerLink]="['/component-one']"class="w3-bar-item w3-button "><i class="material-icons nav-icon">priority_high</i>สมัครสมาชิก</a>
+          <a [routerLink]="['/component-four']"class="w3-bar-item w3-button "><i class="material-icons nav-icon">priority_high</i>ลืมรหัสผ่าน</a>
+          <a  class="w3-bar-item w3-button"><i class="material-icons nav-icon">verified_user</i>ป้อนรหัสยืนยัน</a>
+          <a href="#" class="w3-bar-item w3-button" ><i class="material-icons nav-icon">info</i>เกี่ยวกับ</a>
+        </div>
+        <div class="signin-card">
+        <form class="w3-container nav-toolbar w3-padding">
+          <div>
+            <label class="pzl-signin-label">ชื่อผู้ใช้</label>
+            <input type="text" name="email" id="login-email-input" [(ngModel)]="email" />
+          </div>
+          <div>
+            <label>รหัสผ่าน</label>
+            <input type="password" name="password" id="login-password-input" [(ngModel)]="password"/>
+          </div>
+            <br/>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect"  (click)="callSignin()" id="sendLink"><i class="material-icons">lock_open</i></button>
+            <br>
+          </form>
+          <router-outlet></router-outlet>
+        
+        </div>
+        </body>
+ 
   `,
 })
 export default class ComponentThree {
@@ -33,116 +49,36 @@ export default class ComponentThree {
   title = 'app';
   email:string = null;
   password:string = null;
-  ngOnInit() : void{
-  //  this.signin();
-  //  this.session();
-  
-  }
   signin(){ 
     return new Promise((resolve,reject)=>{
       CognitoService.authenticate(this.email,this.password).then(()=> resolve('succuss'));
     })
-   
-    // return new Promise((resolve,reject)=>{
-    //   var userPool;
-    //       var authenticationData = {
-    //           Username : this.email,
-    //           Password : this.password
-    //       };
-    //       var authenticationDetails= new AWSCognito.AuthenticationDetails(authenticationData);
-
-    //       var poolData = {
-    //         UserPoolId : 'ap-southeast-1_I7DmqS84G',
-    //         ClientId : 'l1rd23b9i4o2b7d6qusvnbjr3' 
-    //       };
-    //       userPool = new AWSCognito.CognitoUserPool(poolData);
-
-    //       var userData = {
-    //           Username : this.email,
-    //           Pool : userPool
-    //       };
-    //       var cognitoUser = new AWSCognito.CognitoUser(userData);
-    //       console.log(userData);
-    //       cognitoUser.authenticateUser(authenticationDetails, {
-    //           onSuccess: function (result){
-                
-    //               console.log('access token + ' + result.getAccessToken().getJwtToken());
-    //               AWS.config.region = 'ap-southeast-1';
-    //               AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    //                 IdentityPoolId: 'ap-southeast-1:8c357bd7-505c-4004-8a87-c15ea83d829c',
-    //                 Logins : {
-    //                   'cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_I7DmqS84G':result.getIdToken().getJwtToken()
-    //                 }
-    //               });
-    //               // AWS.config.credentials = credentials ;
-    //               console.log("DynamoDBService: reading from DDB with creds - " + AWS.config.credentials);
-    //               // this.route.navigate(['./component-five']);
-    //               resolve();
-    //           },
-    //           onFailure : function(err){
-    //               alert(err);
-    //               reject();
-    //           },
-    //       });
-
-    //   document.getElementById("logout-submit-button").addEventListener("click",(e)=> {
-    //       e.preventDefault();
-    //       var cognitoUser = userPool.getCurrentUser();
-    //       if(cognitoUser){
-    //           cognitoUser.signOut();
-    //       }
-    //   })
-    // })
   }
   callSignin(){
     console.log('in');
     this.signin().then(data => {this.route.navigate(['/component-five']);});
   }
-  session(){
-    var userPool;
-    var poolData = {
-      UserPoolId : 'ap-southeast-1_I7DmqS84G',
-      ClientId : 'l1rd23b9i4o2b7d6qusvnbjr3' 
-    };
-    userPool = new AWSCognito.CognitoUserPool(poolData);
-    window.onload = function(){
-      var cognitoUser = userPool.getCurrentUser();
-      if (cognitoUser != null) {
-        cognitoUser.getSession(function(err,session){
-          if (err){
-            alert(err);
-            return;
-          }
-          if (session.isValid()){
-            (<HTMLInputElement>document.getElementById('username')).value= cognitoUser.getUserName();
-          };
-        });
-      }
-    }
-    
+  openNav() {
+    document.getElementById("mySidenav").style.width = "400px";
   }
-  getEmployees(){
-    console.log(AWS.config);
-    var params;
-    var dynamo = new AWS.DynamoDB({region : "ap-southeast-1"});
-    var dynamoClient = new AWS.DynamoDB.DocumentClient({service:dynamo});
-    console.log('dynamo');
-    params = {
-              TableName : 'EmployeesCognito',
-              Item: {
-              "id" : "testid",
-        }
-    };
-    console.log(params);
-      dynamoClient.put(params,function(err,data){
-              if (err){
-                if(err.code == "ConditionalCheckFailedException"){
-                  console.log("that user already exists")
-                }else{
-                  console.log(err)
-                }
-              }
-              else console.log(data);
-            });
-          }
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  openOrganMenu(){
+    var organMenu = document.getElementById('nav-organSubMenu');
+    if (organMenu.style.display === 'none') {
+        organMenu.style.display = 'block';
+    } else {
+        organMenu.style.display = 'none';
+    }
+  }
+
+  openEmployeeMenu(){
+    var emMenu = document.getElementById('nav-emSubMenu');
+    if (emMenu.style.display === 'none') {
+        emMenu.style.display = 'block';
+    } else {
+        emMenu.style.display = 'none';
+    }
+  }
 }

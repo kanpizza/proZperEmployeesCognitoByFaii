@@ -1,26 +1,11 @@
 import {Component} from '@angular/core';
 import { Router } from '@angular/router';
-// import * as AWS from 'aws-sdk';
-// import * as AWSCognito from 'amazon-cognito-identity-js';
-// import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
 import { DynamoDBService } from './dynamodb.service';
 @Component({
   selector: 'app',
   styleUrls: ['./app.component.css'],
   template: `
-  current user 1
-  <p id="username"></p>
-    <nav>
-      <a [routerLink]="['/component-one']">Component One</a>
-      <a [routerLink]="['/component-two']">Component Two</a>
-      <a [routerLink]="['/component-three']">Component Three</a>
-      <a [routerLink]="['/component-four']">Component Four</a>
-    </nav>
-
-    <div style="color: green; margin-top: 1rem;">Outlet:</div>
-    <div style="border: 2px solid green; padding: 1rem;">
-      <router-outlet></router-outlet>
-    </div>
+  <router-outlet></router-outlet>
   `
 })
 export class AppComponent {
