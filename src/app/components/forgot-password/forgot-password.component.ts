@@ -18,9 +18,9 @@ import {DynamoDBService} from '../../core/dynamodb.service';
     <label>Email</label>
     <input type="text" name="email" id="forget-email-input">
     request<input type="submit" id="request-reset-button" />
-    <label>Reset code</label>
-    <input type="password" name="password" id="reset-code-input"/>
-    new password<input type="password" id="new-password-input" />
+    <label>old password</label>
+    <input type="password" name="password"  [(ngModel)]="oldPassword" id="reset-code-input"/>
+    new password<input [(ngModel)]="newPassword"type="password" id="new-password-input" />
     <input type="submit" id="forget-submit-button" />
     
   `,
@@ -30,62 +30,13 @@ export default class ComponentFour {
    
   }
   title = 'app';
+  oldPassword:string ;
+  newPassword:string ;
   ngOnInit() : void{
       this.forgetPassword();
   }
   forgetPassword(){
-      var email;
-      document.getElementById("request-reset-button").addEventListener("click",(e) =>{
-          e.preventDefault();
-        email =  (<HTMLInputElement>document.getElementById('forget-email-input')).value;
-          var poolData = {
-            UserPoolId : 'ap-southeast-1_I7DmqS84G',
-            ClientId : 'l1rd23b9i4o2b7d6qusvnbjr3' 
-          };
-          var userPool = new AWSCognito.CognitoUserPool(poolData);
-          console.log(userPool);
-          var userData = {
-              Username : email,
-              Pool :userPool
-          }
-        
-        var cognitoUser = new AWSCognito.CognitoUser(userData);
-        console.log('forgrt = ' +userData);
-        cognitoUser.forgotPassword({
-            onSuccess : function () {
-                console.log("Password Reset Initiates")
-            },
-            onFailure : function(err){
-                alert(err);
-            }
-        });
-    })
-    document.getElementById("forget-submit-button").addEventListener("click",(e)=>{
-        e.preventDefault();
-        email =  (<HTMLInputElement>document.getElementById('forget-email-input')).value;
-        var verificationCode =  (<HTMLInputElement>document.getElementById("reset-code-input")).value;
-        var newPassword =(<HTMLInputElement>document.getElementById("new-password-input")).value;
-        console.log(verificationCode,newPassword);
-        var poolData = {
-            UserPoolId : 'ap-southeast-1_I7DmqS84G',
-            ClientId : 'l1rd23b9i4o2b7d6qusvnbjr3' 
-          };
-          var userPool = new AWSCognito.CognitoUserPool(poolData);
-        var userData = {
-            Username : email,
-            Pool :userPool
-        }
-      
-      var cognitoUser = new AWSCognito.CognitoUser(userData);
-        cognitoUser.confirmPassword(verificationCode,newPassword,{
-            onSuccess:()=>{
-                console.log("Success");
-            },
-            onFailure: (err) => {
-                console.log(err);
-            }
-        });
-    });
+      CognitoService.changePassword(this.oldPassword,this.newPassword);
   }
 
  
