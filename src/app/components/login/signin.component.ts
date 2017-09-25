@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import * as AWS from 'aws-sdk';
 import * as AWSCognito from 'amazon-cognito-identity-js';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
-import { CognitoService} from './cognito.service';
+
+import { CognitoService } from '../../core/cognito.service';
+import {EmployeeService} from '../../core/employeeService';
+import { S3Service } from '../../core/s3.service';
+import {DynamoDBService} from '../../core/dynamodb.service';
 @Component({
-  selector: 'component-three',
-  styleUrls: ['./app.component.css'],
+  selector: 'signin',
+  styleUrls: ['../../app.component.css'],
   template: `
           <body>
           <div class="title-bar w3-container">
@@ -16,9 +21,9 @@ import { CognitoService} from './cognito.service';
         <div id="mySidenav"style="opacity:1.0;filter:alpha(opacity=200)" class="w3-sidebar w3-bar-block w3-animate-left" (mouseleave)="closeNav()">
         <div class="sidenav-menu-header w3-container">
           </div>
-          <a [routerLink]="['/component-one']"class="w3-bar-item w3-button "><i class="material-icons nav-icon">priority_high</i>สมัครสมาชิก</a>
-          <a [routerLink]="['/component-four']"class="w3-bar-item w3-button "><i class="material-icons nav-icon">priority_high</i>ลืมรหัสผ่าน</a>
-          <a  class="w3-bar-item w3-button"><i class="material-icons nav-icon">verified_user</i>ป้อนรหัสยืนยัน</a>
+          <a [routerLink]="['/signup']"class="w3-bar-item w3-button "><i class="material-icons nav-icon">priority_high</i>สมัครสมาชิก</a>
+          <a [routerLink]="['/forgot-password']"class="w3-bar-item w3-button "><i class="material-icons nav-icon">priority_high</i>ลืมรหัสผ่าน</a>
+          <a  [routerLink]="['/verify-user']" class="w3-bar-item w3-button"><i class="material-icons nav-icon">verified_user</i>ป้อนรหัสยืนยัน</a>
           <a href="#" class="w3-bar-item w3-button" ><i class="material-icons nav-icon">info</i>เกี่ยวกับ</a>
         </div>
         <div class="signin-card">
@@ -56,7 +61,7 @@ export default class ComponentThree {
   }
   callSignin(){
     console.log('in');
-    this.signin().then(data => {this.route.navigate(['/component-five']);});
+    this.signin().then(data => {this.route.navigate(['/employee']);});
   }
   openNav() {
     document.getElementById("mySidenav").style.width = "400px";

@@ -2,9 +2,15 @@ import {Component} from '@angular/core';
 import * as AWS from 'aws-sdk';
 import * as AWSCognito from 'amazon-cognito-identity-js';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
-import { CognitoService } from './cognito.service';
+
+import { CognitoService } from '../../core/cognito.service';
+import {EmployeeService} from '../../core/employeeService';
+import { S3Service } from '../../core/s3.service';
+import {DynamoDBService} from '../../core/dynamodb.service';
+
 @Component({
-  selector: 'component-one',
+  selector: 'signup',
+  styleUrls: ['../../app.component.css'],
   template:  ` 
   <p id="username"></p>
   <h1>Sign Up Form</h1>

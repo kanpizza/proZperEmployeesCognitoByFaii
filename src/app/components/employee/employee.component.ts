@@ -1,21 +1,25 @@
 import { Component, OnInit, ViewChild,ViewContainerRef  } from '@angular/core';
 import { ActivatedRoute ,Router} from '@angular/router';
-import * as AWS from 'aws-sdk';
-import * as AWSCognito from 'amazon-cognito-identity-js';
-import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
+import { ToastsManager, Toast } from 'ng2-toastr';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { CognitoService } from './cognito.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/concatMap';
-import {Employee} from 'assets/Data/employee.types';
-import {EmployeeService} from './employeeService';
-import { ToastsManager, Toast } from 'ng2-toastr';
-import { S3Service } from './s3.service';
-import {DynamoDBService} from './dynamodb.service';
+
+import * as AWS from 'aws-sdk';
+import * as AWSCognito from 'amazon-cognito-identity-js';
+import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
+
+import {Employee} from '../../../assets/Data/employee.types';
+
+import { CognitoService } from '../../core/cognito.service';
+import {EmployeeService} from '../../core/employeeService';
+import { S3Service } from '../../core/s3.service';
+import {DynamoDBService} from '../../core/dynamodb.service';
+
 @Component({
-  selector: 'component-five',
-  styleUrls: ['./app.component.css'],
+  selector: 'employee',
+  styleUrls: ['../../app.component.css'],
   template: `
   <body>
   <div class="title-bar w3-container">
@@ -469,7 +473,7 @@ export default class ComponentFive implements OnInit {
         },
         "email": null
     }
-  }
+  }  
   DynamoDBService.put(params);
   }
   removeEmployee(){
