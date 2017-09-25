@@ -10,19 +10,8 @@ import {DynamoDBService} from '../../core/dynamodb.service';
 
 @Component({
   selector: 'signup',
-  styleUrls: ['../../app.component.css'],
-  template:  ` 
-  <p id="username"></p>
-  <h1>Sign Up Form</h1>
-  <form>
-    <label>Email</label>
-    <input type="text" name="email" id="email-input">
-    <label>Password</label>
-    <input type="password" name="password" id="password-input"/>
-    <br/>
-    <input type="submit" id="signup-submit-button" />
-  </form>
-  `
+  styleUrls: ['../../app/app.component.css'],
+  templateUrl:'signup.component.html'
 })
 export default class ComponentOne { 
   userPool;

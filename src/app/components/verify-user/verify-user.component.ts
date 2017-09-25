@@ -10,22 +10,8 @@ import { S3Service } from '../../core/s3.service';
 import {DynamoDBService} from '../../core/dynamodb.service';
 @Component({
   selector: 'verify-user',
-  styleUrls: ['../../app.component.css'],
-  template: `
-  <div>
-  <p id="username"></p>
-    <p>Confirmation Form</p>
-    
-    <form>
-      <label>Email</label>
-      <input type="text" name="email" id="confirmation-email-input" [(ngModel)]="email"/>
-      <label>Confirmation Code</label>
-      <input type="text" name="confirmation" id="confirmation-code-input" [(ngModel)]="password" />
-      <input type="submit" id="confirmation-submit-button" />
-    </form>
-    </div>
-
-  `,
+  styleUrls: ['../../app/app.component.css'],
+  templateUrl: 'verify-user.component.html',
 })
 export default class ComponentTwo {
   private id;

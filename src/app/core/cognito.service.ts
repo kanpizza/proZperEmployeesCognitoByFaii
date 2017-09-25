@@ -265,4 +265,52 @@ export class CognitoService {
       private static getCognitoIdentity(): string {
         return AWS.config.credentials.identityId;
       }
+
+      public static forgetPassword(email:string){
+          var poolData = {
+            UserPoolId : 'ap-southeast-1_I7DmqS84G',
+            ClientId : 'l1rd23b9i4o2b7d6qusvnbjr3' 
+          };
+          var userPool = new AWSCognito.CognitoUserPool(poolData);
+          var userData = {
+              Username : email,
+              Pool :userPool
+          }
+        
+        var cognitoUser = new AWSCognito.CognitoUser(userData);
+        console.log('forget = ' +userData);
+        cognitoUser.forgotPassword({
+            onSuccess : function () {
+                console.log("Password Reset Initiates")
+            },
+            onFailure : function(err){
+                alert(err);                                               
+            }
+        });
+    }
+    // public static verifyCode(){
+    //     var verificationCode =  (<HTMLInputElement>document.getElementById("reset-code-input")).value;
+    //     var newPassword =(<HTMLInputElement>document.getElementById("new-password-input")).value;
+    //     console.log(verificationCode,newPassword);
+    //     var poolData = {
+    //         UserPoolId : 'ap-southeast-1_I7DmqS84G',
+    //         ClientId : 'l1rd23b9i4o2b7d6qusvnbjr3' 
+    //       };
+    //       var userPool = new AWSCognito.CognitoUserPool(poolData);
+    //     var userData = {
+    //         Username : email,
+    //         Pool :userPool
+    //     }
+      
+    //   var cognitoUser = new AWSCognito.CognitoUser(userData);
+    //     cognitoUser.confirmPassword(verificationCode,newPassword,{
+    //         onSuccess:()=>{
+    //             console.log("Success");
+    //         },
+    //         onFailure: (err) => {
+    //             console.log(err);
+    //         }
+    //     });
+    // });
+    //   }
 }

@@ -8,7 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './app/app.component';
 import ComponentOne from './components/signup/signup.component';
 import ComponentTwo from './components/verify-user/verify-user.component';
 import ComponentThree from './components/login/signin.component';

@@ -6,6 +6,7 @@ import ComponentTwo from './components/verify-user/verify-user.component';
 import ComponentThree from './components/login/signin.component';
 import ComponentFour from './components/forgot-password/forgot-password.component';
 import ComponentFive from './components/employee/employee.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: 'signup', component: ComponentOne },

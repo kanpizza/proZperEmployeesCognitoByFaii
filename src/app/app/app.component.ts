@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { DynamoDBService } from './core/dynamodb.service';
+import { DynamoDBService } from '../core/dynamodb.service';
 @Component({
   selector: 'app',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['../app/app.component.css'],
   template: `
   <router-outlet></router-outlet>
   `
